@@ -1,5 +1,10 @@
 #!/usr/bin/python3
 
+"""
+this function will unlock boxes based on the keys inside of em
+
+"""
+
 
 def canUnlockAll(boxes):
     unlocked = True
