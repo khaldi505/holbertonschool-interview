@@ -1,74 +1,53 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
-
+#include <stdlib.h>
 /**
- * print_listint - prints all elements of a listint_t list
- * @h: pointer to head of list
- * Return: number of nodes
+ *insert_node - n C that insesorted singly linked list.
+ *@head: pointer to the head
+ *@number: the value of the new node
+ *Return: the adress of the new node or null
  */
-size_t print_listint(const listint_t *h)
+listint_t *insert_node(listint_t **head, int number)
 {
-    const listint_t *current;
-    unsigned int n; /* number of nodes */
-
-    current = h;
-    n = 0;
-    while (current != NULL)
-    {
-        printf("%i\n", current->n);
-        current = current->next;
-        n++;
-    }
-
-    return (n);
+listint_t *new_node, *temp;
+if (head == NULL)
+return (NULL);
+temp = *head;
+new_node = malloc(sizeof(listint_t));
+if (new_node == NULL)
+return (NULL);
+new_node->n = number;
+new_node->next = NULL;
+if (*head == NULL)
+{
+*head = new_node;
+return (*head);
 }
-
-/**
- * add_nodeint_end - adds a new node at the end of a listint_t list
- * @head: pointer to pointer of first node of listint_t list
- * @n: integer to be included in new node
- * Return: address of the new element or NULL if it fails
- */
-listint_t *add_nodeint_end(listint_t **head, const int n)
+if (temp->n > number)
 {
-    listint_t *new;
-    listint_t *current;
-
-    current = *head;
-
-    new = malloc(sizeof(listint_t));
-    if (new == NULL)
-        return (NULL);
-
-    new->n = n;
-    new->next = NULL;
-
-    if (*head == NULL)
-        *head = new;
-    else
-    {
-        while (current->next != NULL)
-            current = current->next;
-        current->next = new;
-    }
-
-    return (new);
+new_node->next = *head;
+*head = new_node;
+return (*head);
 }
-
-/**
- * free_listint - frees a listint_t list
- * @head: pointer to list to be freed
- * Return: void
- */
-void free_listint(listint_t *head)
+while (temp != NULL)
 {
-    listint_t *current;
-
-    while (head != NULL)
-    {
-        current = head;
-        head = head->next;
-        free(current);
-    }
+if (temp->n < number && temp->next == NULL)
+{
+temp->next = new_node;
+return (temp);
+}
+if (temp->n == number)
+{
+new_node->next = temp->next;
+temp->next = new_node;
+return (temp);
+}
+if (temp->n < number && temp->next->n > number)
+{
+new_node->next = (temp)->next;
+temp->next = new_node;
+return (temp);
+}
+temp = temp->next;
+}
+return (temp);
 }
