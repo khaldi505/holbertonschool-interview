@@ -1,0 +1,12 @@
+#!/usr/bin/python3
+
+"""
+
+"""
+
+def minOperations(n):
+	ops = 0
+	m = 0
+	while m != n:
+		if 
+			m += 
