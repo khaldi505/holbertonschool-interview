@@ -1,5 +1,6 @@
 # utf8 validator
 
+
 def validUTF8(data):
     bpc = 8
     mno = 4
