@@ -2,6 +2,19 @@
 """ti hao 9alek Module for validUtf8 method wala dra chnowa"""
 
 
+def to_bits(bytes):
+    for byte in bytes:
+        num = []
+        exp = 1 << NUMBER_OF_BITS_PER_BLOCK
+        while exp:
+            exp >>= 1
+            num.append(bool(byte & exp))
+        yield num
+
+
+"""ti hao 9alek Module for validUtf8 method wala dra chnowa"""
+
+
 def validUTF8(data):
     bpc = 8
     mno = 4
