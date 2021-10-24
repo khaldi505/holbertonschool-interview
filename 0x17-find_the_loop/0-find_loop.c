@@ -17,7 +17,7 @@ if (head == nextNode)
 {
 head = prev;
 prev =  nextNode;
-while (True)
+while (true)
 {
 nextNode = prev;
 while (nextNode->next != head && nextNode->next != prev)
