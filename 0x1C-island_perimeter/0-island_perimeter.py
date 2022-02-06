@@ -20,6 +20,8 @@ def island_perimeter(grid):
                 # Check if the cell is on the top edge
                 if i == 0 or grid[i-1][j] == 0:
                     perimeter += 1
-
+                # Check if the cell is on the bottom edge
+                if i == len(grid)-1 or grid[i+1][j] == 0:
+                    perimeter += 1
 
     return perimeter
