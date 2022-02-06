@@ -2,39 +2,24 @@
 
 def island_perimeter(grid):
     """
-    Returns the perimeter of the island described in grid.
-    The island is
-    described as a matrix of 0s and 1s.
-    0 represents water
+    Calculates the perimeter of an island
     """
-
-
     # Initialize perimeter
     perimeter = 0
-
-    # Loop through the grid
-    for row in range(len(grid)):
-        for col in range(len(grid[row])):
-
-            # If the cell is land, check the 4 adjacent cells
-            if grid[
-                row
-            ][col] == 1:
-
-                # Check the cell to the right
-                if col + 1 < len(grid[row]) and grid[row][col + 1] == 1:
+    # Iterate through the grid
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            # Check if the cell is a land
+            if grid[i][j] == 1:
+                # Check if the cell is on the left edge
+                if j == 0 or grid[i][j-1] == 0:
+                    perimeter += 1
+                # Check if the cell is on the right edge
+                if j == len(grid[i])-1 or grid[i][j+1] == 0:
+                    perimeter += 1
+                # Check if the cell is on the top edge
+                if i == 0 or grid[i-1][j] == 0:
                     perimeter += 1
 
-                # Check the cell to the left
-                if col - 1 >= 0 and grid[row][col - 1] == 1:
-                    perimeter += 1
-
-                # Check the cell below
-                if row + 1 < len(grid) and grid[row + 1][col] == 1:
-                    perimeter += 1
-
-                # Check the cell above
-                if row - 1 >= 0 and grid[row - 1][col] == 1:
-                    perimeter += 1
 
     return perimeter
