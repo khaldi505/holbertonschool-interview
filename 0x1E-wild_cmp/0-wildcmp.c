@@ -1,8 +1,11 @@
 #include "holberton.h"
 
-// Prototype: int wildcmp(char *s1, char *s2);
-// s2 can contain the special character *, which matches any sequence of characters.
-// The special char * can replace any string (including an empty string).
+/**
+* wildcmp - wild compare function
+* @s1: string
+* @s2: string to compare
+* Return: 1 if match, 0 if not
+*/
 
 int wildcmp(char *s1, char *s2)
 {
@@ -20,5 +23,4 @@ return (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1));
 if (*s1 == *s2)
 return (wildcmp(s1 + 1, s2 + 1));
 return (0);
-
 }
